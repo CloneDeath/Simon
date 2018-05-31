@@ -7,6 +7,7 @@ namespace Simon {
     public class Tile : Node2D
     {
         [Export] public TileColor Color = TileColor.Yellow;
+        [Export] public bool InputEnabled = true;
         
         [NodePath("Sprites/BlueSprite")] protected Sprite BlueSprite;
         [NodePath("Sprites/GreenSprite")] protected Sprite GreenSprite;
@@ -16,7 +17,7 @@ namespace Simon {
         [NodePath("AnimationPlayer")] protected AnimationPlayer AnimationPlayer;
 
         public event Action<TileColor> Activated;
-
+        
         public override void _Ready() {
             this.SetupNodeTools();
             UpdateColor();
@@ -37,8 +38,8 @@ namespace Simon {
             AnimationPlayer.Play("Hit");
         }
         
-        public void OnClickAreaInputEvent(Object viewport, Object @event, int shapeIdx)
-        {
+        public void OnClickAreaInputEvent(Object viewport, Object @event, int shapeIdx) {
+            if (!InputEnabled) return;
             if (@event is InputEventMouseButton mouse) {
                 if (mouse.Pressed && mouse.ButtonIndex == 1) {
                     Activated?.Invoke(Color);

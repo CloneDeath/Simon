@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Board.cs" type="Script" id=1]
+[ext_resource path="res://Tile.tscn" type="PackedScene" id=2]
+
+[node name="Board" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Tiles" type="Node2D" parent="." index="0"]
+
+[node name="RedTile" parent="Tiles" index="0" instance=ExtResource( 2 )]
+
+position = Vector2( -80, -80 )
+_sections_unfolded = [ "Transform" ]
+Color = 0
+InputEnabled = true
+
+[node name="BlueTile" parent="Tiles" index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 80, -80 )
+_sections_unfolded = [ "Transform" ]
+Color = 1
+InputEnabled = true
+
+[node name="GreenTile" parent="Tiles" index="2" instance=ExtResource( 2 )]
+
+position = Vector2( -80, 80 )
+_sections_unfolded = [ "Transform" ]
+Color = 2
+InputEnabled = true
+
+[node name="YellowTile" parent="Tiles" index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 80, 80 )
+_sections_unfolded = [ "Transform" ]
+Color = 3
+InputEnabled = true
+
+
