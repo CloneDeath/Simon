@@ -10,6 +10,8 @@ namespace Simon {
         [NodePath("Tiles/BlueTile")] protected Tile BlueTile;
         [NodePath("Tiles/GreenTile")] protected Tile GreenTile;
         [NodePath("Tiles/YellowTile")] protected Tile YellowTile;
+        
+        [NodePath(nameof(FeedbackAudio))] protected FeedbackAudio FeedbackAudio;
 
         private static readonly Random _random = new Random();
         
@@ -36,8 +38,38 @@ namespace Simon {
 
         private void CheckForCompletion() {
             if (_inputQueue.Count < _order.Count) return;
+            DisableInput();
+
+            var isCorrect = GetIfInputIsCorrect();
             
+            var timer = new Timer {
+                OneShot = true,
+                WaitTime = 1
+            };
+            AddChild(timer);
+
+            timer.Connect("timeout", this, isCorrect ? nameof(ExecuteSuccess) : nameof(ExecuteFailure));
+            timer.Connect("timeout", timer, "queue_free");
+            
+            timer.Start();
+        }
+
+        private bool GetIfInputIsCorrect() {
+            for (var i = 0; i < _order.Count; i++) {
+                if (_order[i] != _inputQueue[i]) return false;
+            }
+
+            return true;
+        }
+
+        private void ExecuteSuccess() {
+            FeedbackAudio.PlaySuccess();
             AddOrder();
+            Playback();
+        }
+        
+        private void ExecuteFailure() {
+            FeedbackAudio.PlayFailure();
             Playback();
         }
 

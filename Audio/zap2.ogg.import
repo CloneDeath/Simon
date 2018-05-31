@@ -10,9 +10,9 @@ source_file="res://Audio/zap2.ogg"
 source_md5="569e20440f80203d8a04708388bcd1af"
 
 dest_files=[ "res://.import/zap2.ogg-66407e6dce1b3d970751d83fb9ad7fa6.oggstr" ]
-dest_md5="16e747fa595d230ed53adc24860d7cb4"
+dest_md5="8d6627724db4e212c5d2e056be050c90"
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

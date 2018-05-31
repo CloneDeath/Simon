@@ -10,9 +10,9 @@ source_file="res://Audio/zapThreeToneDown.ogg"
 source_md5="c9cba63ec9018c247e7602c3c4bad825"
 
 dest_files=[ "res://.import/zapThreeToneDown.ogg-51f823ac505205edf0816b9855ed5f28.oggstr" ]
-dest_md5="5bbc88cd254e053d7f5783c876dfc1c4"
+dest_md5="4cadd2dba006424b7ac284c5c810ce21"
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

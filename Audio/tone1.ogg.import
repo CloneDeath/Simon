@@ -10,9 +10,9 @@ source_file="res://Audio/tone1.ogg"
 source_md5="9e925c28f0a357a1e4ff6d79138cbf14"
 
 dest_files=[ "res://.import/tone1.ogg-2e1baff6cf920dd976da124304fa11c0.oggstr" ]
-dest_md5="60fbbba93a30fd5452acf3300ac4c9ab"
+dest_md5="be37dd24da05cfbda7d5c94b5f63c778"
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
