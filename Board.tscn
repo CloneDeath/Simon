@@ -47,7 +47,6 @@ InputEnabled = true
 
 [node name="FeedbackAudio" type="Node" parent="." index="1"]
 
-editor/display_folded = true
 script = ExtResource( 3 )
 
 [node name="SuccessAudio" type="AudioStreamPlayer" parent="FeedbackAudio" index="0"]
