@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Board.cs" />
     <Compile Include="FeedbackAudio.cs" />
+    <Compile Include="GameGui.cs" />
     <Compile Include="Life\Heart.cs" />
     <Compile Include="Life\LifeBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

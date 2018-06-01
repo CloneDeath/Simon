@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Board.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Life/LifeBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameGui.cs" type="Script" id=3]
 
 [node name="Main" type="Node" index="0"]
 
@@ -16,5 +17,50 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( 108.562, 100 )
 _sections_unfolded = [ "Transform" ]
 MaxHealth = 3
+
+[node name="GameGui" type="Container" parent="." index="2"]
+
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -211.0
+margin_top = -294.0
+margin_right = -2.0
+margin_bottom = 299.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 3 )
+
+[node name="ScoreLabel" type="Label" parent="GameGui" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -20.5
+margin_top = 38.0
+margin_right = 19.5
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="Failure" from="Board" to="LifeBar" method="TakeDamage"]
+
+[connection signal="Success" from="Board" to="GameGui" method="IncrementScore"]
 
 

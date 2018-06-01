@@ -6,6 +6,8 @@ namespace Simon.Life {
     {
         [Export] public int MaxHealth = 3;
 
+        [Signal] public delegate void NoMoreHealth();
+
         public int CurrentHealth { get; private set; }
         
         protected PackedScene HeartScene = (PackedScene)ResourceLoader.Load("res://Life/Heart.tscn");
@@ -24,8 +26,10 @@ namespace Simon.Life {
         }
 
         public void TakeDamage() {
+            _hearts[_hearts.Count - CurrentHealth].Damaged = true;
             CurrentHealth--;
-            _hearts[CurrentHealth].Damaged = true;
+
+            if (CurrentHealth <= 0) EmitSignal(nameof(NoMoreHealth));
         }
     }
 }

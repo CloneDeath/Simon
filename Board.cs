@@ -13,6 +13,7 @@ namespace Simon {
         [NodePath(nameof(FeedbackAudio))] protected FeedbackAudio FeedbackAudio;
 
         [Signal] public delegate void Failure();
+        [Signal] public delegate void Success();
 
         private static readonly Random _random = new Random();
         
@@ -42,8 +43,6 @@ namespace Simon {
             DisableInput();
 
             var isCorrect = GetIfInputIsCorrect();
-
-            if (!isCorrect) EmitSignal(nameof(Failure));
             
             var timer = new Timer {
                 OneShot = true,
@@ -66,12 +65,14 @@ namespace Simon {
         }
 
         private void ExecuteSuccess() {
+            EmitSignal(nameof(Success));
             FeedbackAudio.PlaySuccess();
             AddOrder();
             Playback();
         }
         
         private void ExecuteFailure() {
+            EmitSignal(nameof(Failure));
             FeedbackAudio.PlayFailure();
             Playback();
         }
